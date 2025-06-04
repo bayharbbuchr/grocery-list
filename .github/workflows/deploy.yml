@@ -30,6 +30,7 @@ jobs:
         with:
           folder: .
           branch: gh-pages
+          token: ${{ secrets.GH_PAT }}
           clean: true
           single-commit: true
           clean-exclude: |
