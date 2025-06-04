@@ -1,0 +1,354 @@
+:root {
+    --primary-color: #4CAF50;
+    --primary-hover: #45a049;
+    --secondary-color: #f44336;
+    --secondary-hover: #d32f2f;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --border-color: #ddd;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 20px 0 15px;
+    color: #444;
+}
+
+.add-item {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#itemInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+#itemInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button i {
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #d0d0d0;
+}
+
+#addBtn {
+    padding: 0 20px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.items-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.item {
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.item.in-cart {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.item-actions button {
+    padding: 5px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.item:hover .item-actions button {
+    opacity: 1;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+    gap: 15px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#imagePreview {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#imagePreview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    margin-top: 10px;
+    border: 1px solid #eee;
+}
+
+/* Completed Trips */
+.completed-trips {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--light-gray);
+}
+
+.trips-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.trip-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.trip-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.trip-date {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.trip-receipt {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.trip-receipt img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .items-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons button {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+    
+    /* Improved touch targets */
+    .item {
+        padding: 20px;
+        min-height: 60px;
+    }
+    
+    .item-actions {
+        gap: 15px;
+    }
+    
+    .item-actions button {
+        padding: 10px 12px;
+        font-size: 16px;
+        opacity: 1; /* Always show buttons on mobile */
+    }
+    
+    /* Prevent text selection on tap */
+    .item {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* Add some space at the bottom for mobile browsers */
+    .container {
+        padding-bottom: 30px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.item {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+button:focus {
+    outline: 3px solid #4d90fe;
+    outline-offset: 2px;
+}

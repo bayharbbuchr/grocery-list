@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="description" content="A simple, user-friendly grocery list app">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SchoppingSPREE">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="manifest" href="/manifest.json">
+    <title>SchoppingSPREE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SchoppingSPREE</h1>
+        </header>
+        
+        <main>
+            <section class="add-item">
+                <input type="text" id="itemInput" placeholder="Add an item..." autofocus>
+                <button id="addBtn" aria-label="Add item">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </section>
+
+            <section class="shopping-list">
+                <h2>My Grocery List</h2>
+                <div id="itemsList" class="items-list">
+                    <!-- Items will be added here dynamically -->
+                </div>
+            </section>
+
+            <div class="action-buttons">
+                <button id="clearAllBtn" class="btn-secondary">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+                <button id="completeTripBtn" class="btn-primary">
+                    <i class="fas fa-check-circle"></i> Complete Trip
+                </button>
+            </div>
+        </main>
+
+        <!-- Receipt Upload Modal -->
+        <div id="receiptModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Complete Shopping Trip</h2>
+                <div class="form-group">
+                    <label for="tripTitle">Trip Title (optional):</label>
+                    <input type="text" id="tripTitle" placeholder="e.g., Weekly Groceries">
+                </div>
+                <div class="form-group">
+                    <label for="receiptUpload">Upload Receipt (optional):</label>
+                    <input type="file" id="receiptUpload" accept="image/*" capture="camera">
+                    <div id="imagePreview"></div>
+                </div>
+                <button id="saveTripBtn" class="btn-primary">
+                    <i class="fas fa-save"></i> Save Trip
+                </button>
+            </div>
+        </div>
+
+        <!-- Completed Trips Section -->
+        <section id="completedTrips" class="completed-trips">
+            <h2>Completed Trips</h2>
+            <div id="tripsList" class="trips-list">
+                <!-- Completed trips will be added here -->
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // Show install prompt for PWA
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            // Show the install button or other UI element
+            console.log('PWA install prompt available');
+        });
+    </script>
+</body>
+</html>
