@@ -1,12 +1,14 @@
-const CACHE_NAME = 'schoppingspree-v1';
+const CACHE_NAME = 'grocery-list-v1';
+const BASE_URL = '/grocery-list';
+
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  `${BASE_URL}/`,
+  `${BASE_URL}/index.html`,
+  `${BASE_URL}/styles.css`,
+  `${BASE_URL}/app.js`,
+  `${BASE_URL}/manifest.json`,
+  `${BASE_URL}/icons/icon-192x192.png`,
+  `${BASE_URL}/icons/icon-512x512.png`
 ];
 
 // Install event - cache all static assets
