@@ -1,6 +1,6 @@
 {
   "name": "Grocery List",
-  "short_name": "Grocery",
+  "short_name": "SchoppingSPREE",
   "description": "A simple, user-friendly grocery list app",
   "start_url": "/grocery-list/",
   "scope": "/grocery-list/",
